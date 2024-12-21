@@ -1,8 +1,11 @@
 import { createContext, Dispatch, useReducer, } from 'react'
 
 import './App.css'
-import HomePage from './components/HomePage'
+import LogIn from './components/logIn'
 import User from './Types/User'
+import { Stack } from '@mui/material'
+import { RouterProvider } from 'react-router'
+import { router } from './router'
 type action = {
   type: string;
   data: User
@@ -35,9 +38,11 @@ export const userCotext = createContext<UserContextType>([{} as User, () => {}])
 function App() {
 const [user,userDispatch] = useReducer(userReducer,{} as User)
   return (
+    
     <>
+   
     <userCotext.Provider value={[user,userDispatch]} >
-    <HomePage />
+    <LogIn/>
     </userCotext.Provider>
       
     </>
