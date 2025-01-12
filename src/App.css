@@ -1,0 +1,34 @@
+header{
+    display: flex
+    ;
+        justify-content: space-between;
+        width: 100%;
+        height: 70px;
+        padding: 0px 2px 0px 2px;
+        background-color: aquamarine;
+        flex-direction: row-reverse;
+        align-items: center
+}
+body{
+    display: flex
+;
+    flex-direction: column;
+    height: 100px;
+    width: 100%;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    margin: 5px 0px 5px 0px
+}
+main{
+    display: flex
+;
+    height: 100%;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.avtar{
+    display: flex;
+    
+}

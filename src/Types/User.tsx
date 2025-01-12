@@ -1,4 +1,5 @@
 type User={
+    userId:number;
     name:string;
     lastName:string;
     email:string;

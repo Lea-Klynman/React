@@ -1,13 +1,13 @@
-import { useContext, useRef, useState } from "react"
+import {  useContext, useRef, useState } from "react"
 import {
     Button,
     Grid2 as Grid,
     Modal,
     Box,
-    TextField
+    TextField,
 } from "@mui/material";
 import { userCotext } from "../App";
-import HomePage from "./HomePage";
+
 
 
 
@@ -27,22 +27,43 @@ const LogIn =()=> {
     const [isLogin, setIsLogin] = useState(false)
     const [open, setOpen] = useState(false)
  const [user,userDispatch]=useContext(userCotext)
- const nameRef=useRef<HTMLInputElement>(null)
+ 
  const emailRef=useRef<HTMLInputElement>(null)
+ const passwordRef=useRef<HTMLInputElement>(null)
+ const handleRegister=(e:React.MouseEvent<HTMLButtonElement>)=>{
+    e.preventDefault()
+    console.log(passwordRef.current);
+   console.log(emailRef.current);
+    
+    userDispatch({
+        type:'Register',
+        data:{
+            userId:0,
+            name:'',
+            email:emailRef.current?.value||'',
+            lastName:'',
+            address:'',
+            numberPhone:'',
+            password:passwordRef.current?.value || ''
+        }
+    })
+    setOpen(false); setIsLogin(true)
+ }
  const handleSubmit=(e: { preventDefault: ()=>void; })=>{
     e.preventDefault()
-    console.log(nameRef.current);
+    console.log(passwordRef.current);
     console.log(emailRef.current);
     
     userDispatch({
         type:'Log in',
         data:{
-            name:nameRef.current?.value || '',
+            userId:0,
+            name:'',
             email:emailRef.current?.value||'',
             lastName:'',
             address:'',
             numberPhone:'',
-            password:''
+            password:passwordRef.current?.value || ''
         }
     })
     setOpen(false); setIsLogin(true)
@@ -52,18 +73,23 @@ const LogIn =()=> {
        
             <Grid container>
                 <Grid size={4}>
-                    {!isLogin ?
-                        <Button color="primary" variant="contained" onClick={() => setOpen(!open)}>Login</Button> :
-                        <HomePage/>}
+                   
+                        <Button color="primary" variant="contained" onClick={() => setOpen(!open)}>Login</Button> 
+                        
                 </Grid>
             </Grid>
             <Modal open={open} onClose={() => setOpen(false)}>
                 <Box sx={style}>
                     <form onSubmit={handleSubmit}>
-                    <TextField label='userName' inputRef={nameRef}/>
-                    <br/>
                     <TextField label='userEmail' inputRef={emailRef}/>
+
+                    <br/>
+                    <TextField type="password" label='password' inputRef={passwordRef}/>
+
                     <Button type="submit">Login</Button>
+                    <p>don't have an account?</p>
+                    <Button type="button" onClick={handleRegister}>Sing up</Button>
+
                     </form>
                     
                 </Box>

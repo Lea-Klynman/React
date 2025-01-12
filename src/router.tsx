@@ -4,11 +4,12 @@ import NavBar from './components/NavBar'
 import About from './components/About'
 import User from './components/User'
 import Home from './components/Home'
+import AppLayout from './components/AppLayout'
 
 export const router = createBrowserRouter([
     {
       path: '/',
-      element: <><Outlet /><NavBar/></>,
+      element: <AppLayout/>,
       children : [
       {path: 'home', element: <Home/>},
       {path: 'about', element: <About/>},

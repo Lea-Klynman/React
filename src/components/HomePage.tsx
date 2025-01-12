@@ -21,11 +21,10 @@ const style = {
 const HomePage = () => {
     const [user, userDispatch] = useContext(userCotext)
     const [isUpdate, setIsUpdate] = useState(false)
-    const nameRef = useRef<string>(user.name)
+    const nameRef = useRef<HTMLInputElement>(null)
     const emailRef = useRef<HTMLInputElement>(null)
     const lastNameRef = useRef<HTMLInputElement>(null)
     const addressRef = useRef<HTMLInputElement>(null)
-    const passwordRef = useRef<HTMLInputElement>(null)
     const numberPhoneRef = useRef<HTMLInputElement>(null)
     function stringAvatar(name: string) {
         if(name==undefined){
@@ -47,12 +46,13 @@ const HomePage = () => {
         userDispatch({
             type: 'Update',
             data: {
-                name: nameRef.current?.valueOf() || user.name,
+                userId: user.userId,
+                name: nameRef.current?.value || user.name,
                 email: emailRef.current?.value || user.email,
                 lastName: lastNameRef.current?.value || user.lastName,
                 address: addressRef.current?.value || user.address,
                 numberPhone: numberPhoneRef.current?.value || user.numberPhone,
-                password: passwordRef.current?.value || user.password
+                password:   user.password
             }
         })
         console.log(user);
@@ -70,15 +70,14 @@ const HomePage = () => {
 
 
         </Stack>
-        <Stack direction="row" spacing={4}>
-        <RouterProvider router={router} />
-        </Stack>
+        
         
 
 
         <Grid container>
             <Grid size={4}>
                 <Button color="primary" variant="contained" onClick={() => setIsUpdate(!isUpdate)}>Update</Button>
+           
             </Grid>
         </Grid>
         <Modal open={isUpdate} onClose={() => setIsUpdate(false)}>
@@ -90,7 +89,6 @@ const HomePage = () => {
                     <TextField label='userEmail' inputRef={emailRef} />
                     <TextField label='useraddress' inputRef={addressRef} />
                     <TextField label='usernumberPhone' inputRef={numberPhoneRef} />
-                    <TextField label='userPassword' inputRef={passwordRef} />
                     <Button type="submit">Save changes</Button>
                 </form>
 

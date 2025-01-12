@@ -4,6 +4,7 @@ import { userCotext } from "../App"
 
 const NavBar=() => {
     const [user, userDispatch] = useContext(userCotext)
+    console.log(user)
     return (<>
     <nav>
         <Link to="home">Home</Link>|
