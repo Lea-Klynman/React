@@ -2,10 +2,9 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { deepOrange } from '@mui/material/colors';
 import { useContext, useRef, useState } from 'react';
-import { userCotext } from '../App';
+import { userContext } from '../App';
 import { Box, Button, Grid2 as Grid, Modal, TextField, } from '@mui/material';
-import { RouterProvider } from 'react-router';
-import { router } from '../router';
+import axios from 'axios';
 
 const style = {
     position: 'absolute',
@@ -19,45 +18,61 @@ const style = {
     p: 4,
 };
 const HomePage = () => {
-    const [user, userDispatch] = useContext(userCotext)
+    const [user, userDispatch] = useContext(userContext)
     const [isUpdate, setIsUpdate] = useState(false)
     const nameRef = useRef<HTMLInputElement>(null)
     const emailRef = useRef<HTMLInputElement>(null)
     const lastNameRef = useRef<HTMLInputElement>(null)
     const addressRef = useRef<HTMLInputElement>(null)
     const numberPhoneRef = useRef<HTMLInputElement>(null)
-    function stringAvatar(name: string) {
-        if(name==undefined){
-            name = ' ';
-        }
+    const url = 'http://localhost:3000/api/user';
+
+    function stringAvatar(name: string = " ") {
         return {
-            sx: {
-                bgcolor: deepOrange[500],
-            },
-            children: `${name.split(' ')[0][0]}`,
+          sx: {
+            bgcolor: deepOrange[500],
+          },
+          children: name.trim() ? name[0].toUpperCase() : "?",
         };
-    }
-    console.log(user.name);
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
+      }
+    
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
         console.log(nameRef.current);
         console.log(emailRef.current);
-
-        userDispatch({
-            type: 'Update',
-            data: {
-                userId: user.userId,
-                name: nameRef.current?.value || user.name,
-                email: emailRef.current?.value || user.email,
-                lastName: lastNameRef.current?.value || user.lastName,
-                address: addressRef.current?.value || user.address,
-                numberPhone: numberPhoneRef.current?.value || user.numberPhone,
-                password:   user.password
+        user.name= nameRef.current?.value || user.name;
+        user.email= emailRef.current?.value || user.email;
+        user.lastName= lastNameRef.current?.value || user.lastName;
+        user.address= addressRef.current?.value || user.address;
+        user.numberPhone= numberPhoneRef.current?.value || user.numberPhone;
+        try{
+        const res = await axios.post(//1
+            url,
+            user,
+            {
+              headers: {
+                'user-id': `${user.userId}`
+              }      });
+              userDispatch({
+                type: 'Update',
+               
+                data: {...res.data}
+                
+                
+            })
             }
-        })
+            
+        catch (e) {
+          alert("error");
+          
+        }
+        finally
+        {
+            setIsUpdate(false)
+        }
+        
         console.log(user);
         
-        setIsUpdate(false)
 
     }
 
