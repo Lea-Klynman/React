@@ -2,7 +2,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { deepOrange } from '@mui/material/colors';
 import { useContext, useRef, useState } from 'react';
-import { userContext } from '../App';
+import { userContext } from '../../App';
 import { Box, Button, Grid2 as Grid, Modal, TextField, } from '@mui/material';
 import axios from 'axios';
 
@@ -17,7 +17,7 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
-const HomePage = () => {
+const UpdateUser = () => {
     const [user, userDispatch] = useContext(userContext)
     const [isUpdate, setIsUpdate] = useState(false)
     const nameRef = useRef<HTMLInputElement>(null)
@@ -26,6 +26,7 @@ const HomePage = () => {
     const addressRef = useRef<HTMLInputElement>(null)
     const numberPhoneRef = useRef<HTMLInputElement>(null)
     const url = 'http://localhost:3000/api/user';
+console.log(user);
 
     function stringAvatar(name: string = " ") {
         return {
@@ -38,25 +39,32 @@ const HomePage = () => {
     
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
+        debugger;
         console.log(nameRef.current);
         console.log(emailRef.current);
-        user.name= nameRef.current?.value || user.name;
+        user.firstName= nameRef.current?.value || user.firstName;
         user.email= emailRef.current?.value || user.email;
         user.lastName= lastNameRef.current?.value || user.lastName;
         user.address= addressRef.current?.value || user.address;
-        user.numberPhone= numberPhoneRef.current?.value || user.numberPhone;
+        user.phone= numberPhoneRef.current?.value || user.phone;
         try{
-        const res = await axios.post(//1
-            url,
-            user,
-            {
-              headers: {
-                'user-id': `${user.userId}`
-              }      });
+            const res = await axios.put('http://localhost:3001/api/user/', {
+                
+                   firstName: user.firstName,
+                     lastName: user.lastName, 
+                     email: user.email,
+                      address: user.address,
+                       phone: user.phone}
+           , {
+                headers: {
+                    'user-id': user.id,
+                    
+                }
+            });
               userDispatch({
                 type: 'Update',
                
-                data: {...res.data}
+                data: {...res.data.updatedUser}
                 
                 
             })
@@ -80,8 +88,8 @@ const HomePage = () => {
 
         <Stack direction="row" spacing={2}>
 
-            <Avatar {...stringAvatar(user.name)} />
-            <h4>{user.name}</h4>
+            <Avatar {...stringAvatar(user.firstName)} />
+            <h4>{user.firstName}</h4>
 
 
         </Stack>
@@ -98,7 +106,7 @@ const HomePage = () => {
         <Modal open={isUpdate} onClose={() => setIsUpdate(false)}>
             <Box sx={style}>
                 <form onSubmit={handleSubmit}>
-                    <TextField label='userName' inputRef={nameRef} placeholder= {user.name} />
+                    <TextField label='userName' inputRef={nameRef} placeholder= {user.firstName} />
                     <TextField label='userLastName' inputRef={lastNameRef}  />
                     <br />
                     <TextField label='userEmail' inputRef={emailRef} />
@@ -111,4 +119,4 @@ const HomePage = () => {
         </Modal>
     </>
 }
-export default HomePage
+export default UpdateUser

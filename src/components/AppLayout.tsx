@@ -1,9 +1,9 @@
 import { Outlet } from "react-router"
 import NavBar from "./NavBar"
-import LogIn from "./logIn"
+import LogIn from "./UserPages/LogIn"
 import { useContext } from "react"
 import { userContext } from "../App"
-import HomePage from "./HomePage"
+import UpdateUser from "./UserPages/UpdateUser"
 
 export default () =>{
     const [user, userDispatch] = useContext(userContext)
@@ -13,7 +13,7 @@ export default () =>{
 <header>
 <LogIn/>
 <NavBar/>
-<div className="avtar"><HomePage/></div>
+<div className="avtar"><UpdateUser/></div>
 
 </header>
 <main>

@@ -12,7 +12,7 @@ const NavBar=() => {
     <nav>
         <Link to="home">Home</Link>|
         <Link to="about">About</Link>|
-        <Link to={`user/${user.name?user.name:"Customer"}`}>Profile</Link>
+        <Link to={`user/${user.firstName?user.firstName:"Customer"}`}>Profile</Link>
     </nav>
     </>) 
 }

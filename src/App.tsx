@@ -14,14 +14,13 @@ const userReducer = (state: User, action: action) => {
    
   switch (action.type) {
     case 'Register':
-      return state;
+     return {...state, ...action.data}
     case 'Log in':
-      return state;
+      return {...state, ...action.data}
     case 'Update':
-      
-      return state;
+      return {...state, ...action.data}
       case 'user':
-        return state;
+        return {...state, ...action.data}
       
       
     default:
@@ -49,3 +48,4 @@ const [user,userDispatch] = useReducer(userReducer,{} as User)
 }
 
 export default App
+

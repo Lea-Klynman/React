@@ -1,10 +1,10 @@
 type User={
-    userId:number;
-    name:string;
+    id:number;
+    firstName:string;
     lastName:string;
     email:string;
     password:string;
     address:string;
-    numberPhone:string
+    phone:string
 }
 export default User
