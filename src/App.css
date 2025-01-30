@@ -15,7 +15,7 @@ body{
     flex-direction: column;
     height: 100px;
     width: 100%;
-    align-items: stretch;
+    align-items: normal;
     flex-wrap: nowrap;
     margin: 5px 0px 5px 0px
 }

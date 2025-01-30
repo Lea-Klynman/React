@@ -34,7 +34,7 @@ const recipesSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchRecipes.fulfilled, (state, action: PayloadAction<RecipeType[]>) => {
-                state.recipes = [...state.recipes, ...action.payload];
+                 state.recipes = [/*...state.recipes,*/ ...action.payload];
             }).addCase(fetchRecipes.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || "Failed to load recipes";

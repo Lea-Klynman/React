@@ -14,7 +14,7 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
-const LogIn = () => {
+const LogIn = ({ OnLoginSuccess }: { OnLoginSuccess: Function }) => {
     const [isLogin, setIsLogin] = useState(false)
     const [open, setOpen] = useState(false)
     const context = useContext(userContext)
@@ -83,6 +83,7 @@ const LogIn = () => {
                     phone: res.data.phone || ""
                 }
             })
+            OnLoginSuccess();
         } catch (e) {
             alert(e);
             if (e.status === 401)

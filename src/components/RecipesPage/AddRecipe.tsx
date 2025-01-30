@@ -1,9 +1,17 @@
-import { useDispatch } from "react-redux"
-import { addRecipe } from "./recipesSlice"
-import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { array, object, string } from "yup"
-import RecipeType from "../../Types/RecipeType"
+;
+import { AppDispatch } from "./store/store";
+import { array, object, string } from "yup";
+import { useFieldArray, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Box, Button, Checkbox, IconButton, TextField } from "@mui/material";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { Add, Delete } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import RecipeType from "../../Types/RecipeType";
+import { addRecipe } from "./recipesSlice";
+
+
 
 const AddRecipe = () => {
 
@@ -34,7 +42,7 @@ const AddRecipe = () => {
             reset()
         }
     return (<>
-        <button onClick={() => }>add recipe</button>
+        <button onClick={onSubmit(e)} >add recipe</button>
     </>)
 }
 } 
