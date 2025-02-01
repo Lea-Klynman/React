@@ -1,6 +1,4 @@
-import { useContext } from "react"
 import { Link } from "react-router"
-import { userContext } from "../App"
 import { Box, Button, IconButton, Menu, MenuItem, Typography } from "@mui/material"
 import MenuIcon from '@mui/material/IconButton';
 import React from "react";
@@ -15,15 +13,11 @@ const NavBar=() => {
     };
     return (<>
     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-    <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
+    <IconButton size="large"aria-label="account of current user"aria-controls="menu-appbar"aria-haspopup="true"
                                 onClick={handleOpenNavMenu}
                                 color="inherit"
                             >
-                                <MenuIcon />
+                                <MenuIcon sx={{ mr: 1 ,color:"#ED3D48", backgroundColor:"#FFFFFF"}} />
                             </IconButton>
     <Menu 
                                 id="menu-appbar"
@@ -42,13 +36,16 @@ const NavBar=() => {
             <Typography component={Link} to='/about'>about</Typography>
         </MenuItem>
         <MenuItem onClick={handleCloseNavMenu}>
-            <Typography component={Link} to='/'>Home</Typography>
+            <Typography component={Link} to='/home'>Home</Typography>
+        </MenuItem><MenuItem onClick={handleCloseNavMenu}>
+            <Typography component={Link} to='/ShoeRecipe'>Our recipes</Typography>
         </MenuItem>
     </Menu>
 </Box>
 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
     <Button sx={{color:"#FFFFFF"}}component={Link} to='/about'>ABOUT</Button>
     <Button sx={{color:"#FFFFFF"}} component={Link} to='/home'>HOME</Button>
+    <Button sx={{color:"#FFFFFF"}} component={Link} to='/ShoeRecipe'>Our recipes</Button>
 </Box>
    
     </>) 

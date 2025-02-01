@@ -35,7 +35,7 @@ export default () => {
                     fontWeight: 'bold'
                 }}
             >
-                No Recipe Selected
+                Successed Adding
             </Typography>
         </BackgroundBox>
     );

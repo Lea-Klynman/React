@@ -13,14 +13,16 @@ export const fetchRecipes = createAsyncThunk('recipes/fetch', async (_, thunkApi
     }
 })
 
-export const addRecipe = createAsyncThunk('recipes/add', async (recipe: RecipeType, thunkApi) => {
+export const fetchAddRecipe = createAsyncThunk('recipes/add', async ({recipe,userId}: { recipe: RecipeType; userId: number }, thunkApi) => {
     try {
-        const response = await axios.post('http://localhost:3000/api/recipes', recipe);
-        return response.data as RecipeType;
-    } catch (e) {
-        return thunkApi.rejectWithValue(e);
+        console.log(recipe, userId);
+        
+        const res = await axios.post("http://localhost:3000/api/recipes", recipe, { headers: { 'user-id': userId  } });
+        return res.data as RecipeType;
+    } catch (error) {
+        return thunkApi.rejectWithValue(error);
     }
-})
+});
 
 const recipesSlice = createSlice({
     name: 'recipes',
@@ -38,17 +40,17 @@ const recipesSlice = createSlice({
             }).addCase(fetchRecipes.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || "Failed to load recipes";
-            }).addCase(fetchRecipes.pending, (state, action) => {
+            }).addCase(fetchRecipes.pending, (state) => {
                 state.loading = true;
                 state.error = null;
-            }).addCase(addRecipe.fulfilled, (state, action: PayloadAction<RecipeType>) => {
+            }).addCase(fetchAddRecipe.fulfilled, (state, action: PayloadAction<RecipeType>) => {
                 state.recipes.push(action.payload);
                 state.loading = false;
             }
-            ).addCase(addRecipe.rejected, (state, action) => {
+            ).addCase(fetchAddRecipe.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || "Failed to load recipes";
-            }).addCase(addRecipe.pending, (state, action) => {
+            }).addCase(fetchAddRecipe.pending, (state) => {
                 state.loading = true;
                 state.error = null;
             })

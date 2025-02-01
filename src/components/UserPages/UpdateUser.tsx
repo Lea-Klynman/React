@@ -28,18 +28,10 @@ const UpdateUser = () => {
     const url = 'http://localhost:3000/api/user';
 console.log(user);
 
-    function stringAvatar(name: string = " ") {
-        return {
-          sx: {
-            bgcolor: deepOrange[500],
-          },
-          children: name.trim() ? name[0].toUpperCase() : "?",
-        };
-      }
+    
     
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
-        debugger;
         console.log(nameRef.current);
         console.log(emailRef.current);
         user.firstName= nameRef.current?.value || user.firstName;
@@ -48,19 +40,10 @@ console.log(user);
         user.address= addressRef.current?.value || user.address;
         user.phone= numberPhoneRef.current?.value || user.phone;
         try{
-            const res = await axios.put('http://localhost:3001/api/user/', {
+            const res = await axios.put(url, {
                 
-                   firstName: user.firstName,
-                     lastName: user.lastName, 
-                     email: user.email,
-                      address: user.address,
-                       phone: user.phone}
-           , {
-                headers: {
-                    'user-id': user.id,
-                    
-                }
-            });
+                 firstName: user.firstName, lastName: user.lastName, email: user.email, address: user.address, phone: user.phone },
+                 { headers: { 'user-id': user.id  } });
               userDispatch({
                 type: 'Update',
                
@@ -85,18 +68,6 @@ console.log(user);
     }
 
     return <>
-
-        <Stack direction="row" spacing={2}>
-
-            <Avatar {...stringAvatar(user.firstName)} />
-            <h4>{user.firstName}</h4>
-
-
-        </Stack>
-        
-        
-
-
         <Grid container>
             <Grid size={4}>
                 <Button color="primary" variant="contained" onClick={() => setIsUpdate(!isUpdate)}>Update</Button>

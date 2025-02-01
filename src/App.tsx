@@ -25,6 +25,8 @@ const userReducer = (state: User, action: action) => {
       return {...state, ...action.data}
       case 'user':
         return {...state, ...action.data}
+        case 'Logout':
+          return {} as User
       
       
     default:

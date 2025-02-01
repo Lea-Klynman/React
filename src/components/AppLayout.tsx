@@ -7,8 +7,8 @@ import UpdateUser from "./UserPages/UpdateUser"
 import { AppBar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from "@mui/material"
 import React from "react"
 import Registration from "./UserPages/Registration"
-import UserDetails from '@mui/material/IconButton';
 import MailIcon from '@mui/icons-material/Mail';
+import UserDetails from "./UserPages/UserDetails"
 
 
 export default () => {
@@ -25,7 +25,10 @@ export default () => {
     const handleLoginSuccess = () => {
         setIsLoggedIn(true);
     };
-
+const handleLogout=()=>{
+    setIsLoggedIn(false);
+    userDispatch({type:"Logout",data:user})
+}
     return (
         <>
             <AppBar>
@@ -40,7 +43,7 @@ export default () => {
                             href="#app-bar-with-responsive-menu"
                             sx={{
                                 mr: 2,
-                                display: { xs: 'none', md: 'flex' },
+                                display: { xs: 'flex', md: 'none' },
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
@@ -48,17 +51,14 @@ export default () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            L
+                            LR
                         </Typography>
 
                             
                        
                     <NavBar />
                     
-                    {isLoggedIn ? <UpdateUser /> : <>
-                        <LogIn OnLoginSuccess={handleLoginSuccess} />
-                        <Registration />
-                    </>}
+   
                     
                         <MailIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         <Typography
@@ -68,19 +68,23 @@ export default () => {
                             href="#app-bar-with-responsive-menu"
                             sx={{
                                 mr: 2,
-                                display: { xs: 'flex', md: 'none' },
+                                display: { xs: 'none', md: 'flex' },
                                 flexGrow: 1,
-                                fontFamily: 'monospace',
+                                fontFamily: 'cursive',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
                                 color: 'inherit',
                                 textDecoration: 'none',
                             }}
                         >
-                            LOGO
+                            LallyReecipies
                         </Typography>
                         
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box sx={{ flexGrow: 0, display:'flex',}}>
+                    {isLoggedIn ? <UpdateUser /> : <>
+                        <LogIn OnLoginSuccess={handleLoginSuccess} />
+                        <Registration />
+                    </>}
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu}>
                                 <UserDetails />
@@ -88,7 +92,7 @@ export default () => {
                         </Tooltip>
                         <Menu open={Boolean(anchorElUser)} onClose={handleCloseUserMenu}>
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography>Log Out</Typography>
+                                <Typography onClick={handleLogout}>Log Out</Typography>
                             </MenuItem>
                         </Menu>
 

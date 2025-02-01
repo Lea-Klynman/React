@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react"
 import { Button,Grid2 as Grid,Modal,Box, TextField,
 } from "@mui/material";
 import { userContext } from "../../App";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -15,7 +15,6 @@ const style = {
     p: 4,
 };
 const LogIn = ({ OnLoginSuccess }: { OnLoginSuccess: Function }) => {
-    const [isLogin, setIsLogin] = useState(false)
     const [open, setOpen] = useState(false)
     const context = useContext(userContext)
     if (!context) 
