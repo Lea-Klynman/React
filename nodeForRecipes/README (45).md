@@ -1,4 +1,4 @@
-# NodeForRecipes
+npm# NodeForRecipes
 
 NodeForRecipes is a simple Node.js application that allows users to register, login, and manage recipes. The application uses Express.js for the server, and JSON files for data storage.
 
@@ -60,6 +60,7 @@ NodeForRecipes is a simple Node.js application that allows users to register, lo
     - Headers: `{ "user-id": "123" }`
     - Request body: `{ "title": "Recipe Title", "description": "Recipe Description", "ingredients": ["ingredient1", "ingredient2"], "instructions": "Step by step instructions" }`
     - Response: `{ "message": "Recipe added", "recipe": { ...newRecipe } }`
+
 
 ## Middleware
 

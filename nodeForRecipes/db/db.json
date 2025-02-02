@@ -78,6 +78,29 @@
       "id": 1738081142141,
       "email": "ttt",
       "password": "ttt"
+    },
+    {
+      "id": 1738440435303,
+      "email": "",
+      "password": "1234",
+      "firstName": "rachel",
+      "lastName": "",
+      "address": "",
+      "phone": ""
+    },
+    {
+      "id": 1738442835783,
+      "email": "sv0548498197@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": 1738450508711,
+      "email": "l0533167552@gmail.com",
+      "password": "1234",
+      "firstName": "lali",
+      "lastName": "k",
+      "address": "בן זכאי 62",
+      "phone": "0587652642"
     }
   ],
   "recipes": [
