@@ -2,18 +2,17 @@ import { Outlet } from "react-router"
 import NavBar from "./NavBar"
 import LogIn from "./UserPages/LogIn"
 import { useContext } from "react"
-import { userContext } from "../App"
+import { UserContext} from "../App"
 import UpdateUser from "./UserPages/UpdateUser"
 import { AppBar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from "@mui/material"
 import React from "react"
-import Registration from "./UserPages/Registration"
 import { Spa } from "@mui/icons-material";
 import UserDetails from "./UserPages/UserDetails"
 
 
 export default () => {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-    const [user, userDispatch] = useContext(userContext)
+    const [user, userDispatch] = useContext(UserContext)
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
@@ -83,14 +82,25 @@ const handleLogout=()=>{
                     <Box sx={{ flexGrow: 0, display:'flex',}}>
                     {isLoggedIn ? <UpdateUser /> : <>
                         <LogIn OnLoginSuccess={handleLoginSuccess} />
-                        <Registration />
                     </>}
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu}>
                                 <UserDetails />
                             </IconButton>
                         </Tooltip>
-                        <Menu open={Boolean(anchorElUser)} onClose={handleCloseUserMenu}>
+                        <Menu
+                                sx={{ mt: '45px' }}
+                                id="menu-appbar"
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }} open={Boolean(anchorElUser)} onClose={handleCloseUserMenu}>
                             <MenuItem onClick={handleCloseUserMenu}>
                                 <Typography onClick={handleLogout}>Log Out</Typography>
                             </MenuItem>

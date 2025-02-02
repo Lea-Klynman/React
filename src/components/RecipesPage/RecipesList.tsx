@@ -13,7 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddIcon from '@mui/icons-material/Add';import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Tooltip } from "@mui/material"
-import { userContext } from "../../App";
+import { UserContext } from "../../App";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
@@ -27,13 +27,12 @@ export default ({ open, onClose }: { open: boolean; onClose: () => void }) => {
 
     useEffect(() => { dispatch(fetchRecipes()); }, [dispatch])
     useEffect(()=>{},recipesList)
-       const [user, ] = useContext(userContext)
+       const [user, ] = useContext(UserContext)
        const handleDeleteClick = (event: React.MouseEvent, recipeId: number) => {
-        event.preventDefault(); // Prevent navigation when clicking delete
+        event.preventDefault(); 
         setSelectedRecipe(recipeId);
         setOpenDialog(true);
     };
-console.log(user.id);
 
     const handleDelete = async () => {
         if (selectedRecipe !== null && user.id) {
@@ -43,21 +42,14 @@ console.log(user.id);
             setOpenDialog(false);
             setSelectedRecipe(null);
             navigate('/ShoeRecipe/deleteS');
-
         }
         catch(error){
-            console.error('Failed to delete recipe:', error);
-        }
-      }
+            console.error('Failed to delete recipe:', error); }  }
     };
+
    return (
-    <>
-        <Drawer
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        '& .MuiDrawer-paper': { width: drawerWidth },
-      }}
+    <>  <Drawer
+      sx={{ width: drawerWidth, flexShrink: 0,'& .MuiDrawer-paper': { width: drawerWidth },}}
       variant="persistent"
       anchor="right"
       open={open}

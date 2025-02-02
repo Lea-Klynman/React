@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Avatar, Stack } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
-import { userContext } from "../../App";
+import { UserContext } from "../../App";
 
 const UserDetails = () => {
-    const [user, userDispatch] = useContext(userContext)
+    const [user, userDispatch] = useContext(UserContext)
     
     
     function stringAvatar(name: string) {

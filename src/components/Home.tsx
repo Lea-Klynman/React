@@ -11,34 +11,34 @@ const Home = () => {
                 <Grid  size={{ xs: 12, sm: 6 }}>
                     <RecipeImage imgItem={{
                         img: "fish.jpg",
-                        title: "Meat and fish",
-                        author: "lali",
-                        link: "/ShoeRecipe"
+                        title: "Spicy Chinese-Style Fish",
+                        author: "Chef Roni Levi",
+                        link: "/ShoeRecipe/recipes/5"
                     }} />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <RecipeImage imgItem={{
                         img: "pasta.jpg",
-                        title: "pasta",
-                        author: "lali",
-                        link: "/ShoeRecipe"
+                        title: "Pasta",
+                        author: "Chef Maya Barak",
+                        link: "/ShoeRecipe/recipes/1"
                     }} />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <RecipeImage imgItem={{
-                        img: "meet.webp",
-                        title: "cake",
-                        author: "lali",
-                        link: "/ShoeRecipe"
+                        img: "Black.jpg",
+                        title: "Black Forest Cake",
+                        author: "Chef Kreen Goren",
+                        link: "/ShoeRecipe/recipes/6"
                     }} />
                    
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <RecipeImage imgItem={{
                         img: "boi.webp",
-                        title: "cheesecake",
-                        author: "lali",
-                        link: "/ShoeRecipe"
+                        title: "Stuffed Cabbage",
+                        author: "Chef Daniel Shapira",
+                        link: "/ShoeRecipe/recipes/4"
                     }} />
                 </Grid>
             </Grid>
