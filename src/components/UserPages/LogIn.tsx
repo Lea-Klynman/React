@@ -73,13 +73,7 @@ const LogIn = ({ OnLoginSuccess }: { OnLoginSuccess: Function }) => {
             userDispatch({
                 type: 'Log in',
                 data: {
-                    id: res.data.user.id,
-                    firstName: res.data.firstName || "",
-                    lastName: res.data.lastName || "",
-                    email: res.data.email || "",
-                    password: res.data.password || "",
-                    address: res.data.address || "",
-                    phone: res.data.phone || ""
+                    ...user,...res.data.user
                 }
             })
             OnLoginSuccess();

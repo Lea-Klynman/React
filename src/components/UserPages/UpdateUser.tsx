@@ -26,14 +26,8 @@ const UpdateUser = () => {
     const addressRef = useRef<HTMLInputElement>(null)
     const numberPhoneRef = useRef<HTMLInputElement>(null)
     const url = 'http://localhost:3000/api/user';
-console.log(user);
-
-    
-    
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
-        console.log(nameRef.current);
-        console.log(emailRef.current);
         user.firstName= nameRef.current?.value || user.firstName;
         user.email= emailRef.current?.value || user.email;
         user.lastName= lastNameRef.current?.value || user.lastName;
@@ -42,14 +36,17 @@ console.log(user);
         try{
             const res = await axios.put(url, {
                 
-                 firstName: user.firstName, lastName: user.lastName, email: user.email, address: user.address, phone: user.phone },
+                 firstName: user.firstName,
+                  lastName: user.lastName, 
+                  email: user.email, 
+                  address: user.address, 
+                  phone: user.phone },
                  { headers: { 'user-id': user.id  } });
-              userDispatch({
-                type: 'Update',
-               
-                data: {...res.data.updatedUser}
-                
-                
+              console.log(res);
+              
+                 userDispatch({
+                type: 'Update',  
+                data: {...res.data.updatedUser}   
             })
             }
             
