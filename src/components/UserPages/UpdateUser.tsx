@@ -1,6 +1,3 @@
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import { deepOrange } from '@mui/material/colors';
 import { useContext, useRef, useState } from 'react';
 import { userContext } from '../../App';
 import { Box, Button, Grid2 as Grid, Modal, TextField, } from '@mui/material';

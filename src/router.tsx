@@ -7,6 +7,7 @@ import RecipeInstruction from './components/RecipesPage/RecipeInstruction'
 import NoRecipe from './components/RecipesPage/NoRecipe'
 import AddRecipe from './components/RecipesPage/AddRecipe'
 import SuccessedAdding from './components/RecipesPage/successedAdding'
+import DeleteS from './components/RecipesPage/deleteS'
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +23,8 @@ export const router = createBrowserRouter([
                     { path: '', element: <NoRecipe/> },
                     { path: 'recipes/:id', element: <RecipeInstruction/> },
                     { path: 'Add/:id', element: <AddRecipe/> },
-                    { path: 'successedAdding', element: <SuccessedAdding/> }
+                    { path: 'successedAdding', element: <SuccessedAdding/> },
+                    { path: 'deleteS', element: <DeleteS/> }
                 ]
             },
             { path: 'about', element: <About/> }

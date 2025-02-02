@@ -8,17 +8,21 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Outlet } from "react-router";
 import { Tooltip } from "@mui/material";
 const drawerWidth = 240;  
-  const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
-    open?: boolean;
-  }>(({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginRight: open ? drawerWidth : 0, // ברירת מחדל כשהמגירה סגורה
-  }));
+const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
+  open?: boolean;
+}>(({ theme, open }) => ({
+  flexGrow: 1,
+  padding: theme.spacing(3),
+  transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  marginRight: open ? drawerWidth : 0,
+  width: open ? `calc(100% - ${drawerWidth}px)` : '100%',
+  display: 'flex',
+  justifyContent: open ? 'flex-start' : 'center',
+  alignItems: 'center'
+}));
   
   const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -43,11 +47,11 @@ const ShoeRecipe=()=>{
           </IconButton>
           </Tooltip>
        
-      <Box sx={{ display: 'flex', marginTop: '60px' }}>
+      <Box sx={{ display: 'flex', marginTop: '60px', width: '100%' }}>
       {open && <RecipesList open={open} onClose={handleDrawerToggle} />}
       <Main open={open}>
         <DrawerHeader />
-        <Typography>
+        <Typography sx={{ width: '100%' }}>
           <Outlet/>
         </Typography>
       </Main>

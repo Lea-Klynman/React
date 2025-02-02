@@ -7,7 +7,7 @@ import UpdateUser from "./UserPages/UpdateUser"
 import { AppBar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from "@mui/material"
 import React from "react"
 import Registration from "./UserPages/Registration"
-import MailIcon from '@mui/icons-material/Mail';
+import { Spa } from "@mui/icons-material";
 import UserDetails from "./UserPages/UserDetails"
 
 
@@ -35,7 +35,7 @@ const handleLogout=()=>{
 
             <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <MailIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                        <Spa sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 ,color:"#ED3D48"}} />
                         <Typography
                             variant="h6"
                             noWrap
@@ -60,7 +60,7 @@ const handleLogout=()=>{
                     
    
                     
-                        <MailIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        <Spa sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         <Typography
                             variant="h5"
                             noWrap

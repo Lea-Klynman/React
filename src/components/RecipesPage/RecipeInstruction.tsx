@@ -5,7 +5,7 @@ import RecipeType from "../../Types/RecipeType";
 import { useEffect } from "react";
 import { fetchRecipes } from "./recipesSlice";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
-import { Box, Card, CardContent, CircularProgress, Container, List, ListItem, Typography } from "@mui/material";
+import { Box, CircularProgress, Container, List, ListItem, Typography } from "@mui/material";
 const RecipeInstruction =()=>{
     const {id} = useParams();
     const dispatch = useDispatch<AppDispatch>()

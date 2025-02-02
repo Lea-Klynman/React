@@ -2,24 +2,14 @@ import { useDispatch } from "react-redux";
 import { array, object, string } from "yup";
 import { useFieldArray, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Button, Checkbox, IconButton, TextField } from "@mui/material";
+import { Alert, Box, Button, Checkbox, IconButton, TextField } from "@mui/material";
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Add, Delete } from "@mui/icons-material";
 import RecipeType from "../../Types/RecipeType";
-import { AppDispatch } from "./store";
-import { useContext } from "react";
-import { userContext } from "../../App";
 import { fetchAddRecipe, fetchRecipes } from "./recipesSlice";
 import { useNavigate, useParams } from "react-router";
-
-const styles = {
-    form: {
-      fontFamily: "'Assistant', sans-serif", // כאן תוכל לשים את הפונט שלך
-      direction: "rtl", // חשוב להוסיף כדי שהתצוגה תהיה מימין לשמאל
-    },
-  };
-// סכמת yup עבור המתכון
+import { AppDispatch } from "./store";
 const schema = object({
     title: string().required("Title is required"),
     description: string().required("Description is required"),
@@ -40,7 +30,7 @@ const AddRecipe = () => {
 
     const {
         control,
-        formState: { errors },
+        formState: { errors, isSubmitted },
         register,
         handleSubmit,
         reset
@@ -48,20 +38,18 @@ const AddRecipe = () => {
         defaultValues: {
             title: '',
             description: '',
-            ingredients: [],
+            ingredients: [] as string[],
             instructions: ''
         },
         resolver: yupResolver(schema)
     });
-    
-    const { fields, append, remove } = useFieldArray({
+    const { fields, append, remove } = useFieldArray<any>({
         control,
         name: "ingredients"
     });
     console.log(errors);
-    const dispatchFetch = useDispatch<AppDispatch>();
+    const dispatch = useDispatch<AppDispatch>(); // Modified dispatch type
     const onSubmit = async (data: FormValues) => {
-        console.log("try to submit", data);
         const recipe: RecipeType = {
             title: data.title,
             description: data.description,
@@ -70,14 +58,29 @@ const AddRecipe = () => {
             id: 0,
             authorId: parseInt(id!)
         };
-        dispatchFetch(fetchAddRecipe({ recipe, userId:parseInt(id!)}));
-        dispatchFetch(fetchRecipes());
+        try{
+        await dispatch(fetchAddRecipe({ recipe, userId:parseInt(id!)})).unwrap();
+        await dispatch(fetchRecipes()).unwrap();
         reset();
         navigate('/ShoeRecipe/successedAdding');
+        }catch(error){
+            console.error('Failed to add recipe:', error);
+        }
     }
     return (
         <form onSubmit={handleSubmit(onSubmit)} style={{ maxWidth: "500px", margin: "auto", padding: "20px" ,direction:"rtl"}}>
             <h2 style={{ textAlign: "center" }}>הוספת מתכון</h2>
+            {isSubmitted && Object.keys(errors).length > 0 && (
+                <Alert severity="error" sx={{ mb: 2 }}>
+                    <div>יש לתקן את השגיאות הבאות:</div>
+                    <ul style={{ margin: "8px 0", paddingInlineStart: "20px" }}>
+                        {errors.title && <li>שם המתכון: {errors.title.message}</li>}
+                        {errors.description && <li>תיאור: {errors.description.message}</li>}
+                        {errors.ingredients && <li>מצרכים: {errors.ingredients.message}</li>}
+                        {errors.instructions && <li>הוראות הכנה: {errors.instructions.message}</li>}
+                    </ul>
+                </Alert>
+            )}
             <TextField
                 label="שם המתכון"
                 variant="outlined"
@@ -102,7 +105,7 @@ const AddRecipe = () => {
             {fields.map((field, index) => (
                 <Box key={field.id} display="flex" alignItems="center" gap={1} mb={1}>
                     <TextField
-                        {...register(`ingredients.${index}` as const)} // השתמש בטיפוס הנכון כאן
+                        {...register(`ingredients.${index}` as const)} 
                         variant="outlined"
                         fullWidth
                         error={!!errors.ingredients?.[index]}
@@ -114,17 +117,14 @@ const AddRecipe = () => {
                     </IconButton>
                 </Box>
             ))}
-
             <Button
                 variant="contained"
                 startIcon={<Add />}
-                onClick={() => append("")} // הוסף מיתר ריק כערך ברירת מחדל
+                onClick={() => append("")} 
                 sx={{ mb: 2 }}
             >
                 הוסף מצרך
             </Button>
-
-
             <TextField
                 label="הוראות הכנה"
                 variant="outlined"
