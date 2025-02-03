@@ -38,14 +38,14 @@ const NavBar=() => {
         <MenuItem onClick={handleCloseNavMenu}>
             <Typography component={Link} to='/home'>Home</Typography>
         </MenuItem><MenuItem onClick={handleCloseNavMenu}>
-            <Typography component={Link} to='/ShoeRecipe'>Our recipes</Typography>
+            <Typography component={Link} to='/ShowRecipe'>Our recipes</Typography>
         </MenuItem>
     </Menu>
 </Box>
 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
     <Button sx={{color:"#FFFFFF"}}component={Link} to='/about'>ABOUT</Button>
     <Button sx={{color:"#FFFFFF"}} component={Link} to='/home'>HOME</Button>
-    <Button sx={{color:"#FFFFFF"}} component={Link} to='/ShoeRecipe'>Our recipes</Button>
+    <Button sx={{color:"#FFFFFF"}} component={Link} to='/ShowRecipe'>Our recipes</Button>
 </Box>
    
     </>) 

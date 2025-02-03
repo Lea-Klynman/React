@@ -16,7 +16,6 @@ import AddIcon from '@mui/icons-material/Add';import { Button, Dialog, DialogAct
 import { UserContext } from "../../App";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-
 const drawerWidth = 240;
 export default ({ open, onClose }: { open: boolean; onClose: () => void }) => {
     const dispatch = useDispatch<AppDispatch>()
@@ -41,7 +40,7 @@ export default ({ open, onClose }: { open: boolean; onClose: () => void }) => {
           await dispatch(fetchRecipes()).unwrap();
             setOpenDialog(false);
             setSelectedRecipe(null);
-            navigate('/ShoeRecipe/deleteS');
+            navigate('/ShowRecipe/deleteS');
         }
         catch(error){
             console.error('Failed to delete recipe:', error); }  }
@@ -50,10 +49,7 @@ export default ({ open, onClose }: { open: boolean; onClose: () => void }) => {
    return (
     <>  <Drawer
       sx={{ width: drawerWidth, flexShrink: 0,'& .MuiDrawer-paper': { width: drawerWidth },}}
-      variant="persistent"
-      anchor="right"
-      open={open}
-    >
+      variant="persistent" anchor="right" open={open}>
      <Tooltip title="Close Recipies List" arrow>
       <IconButton onClick={onClose} sx={{ alignSelf: 'flex-end', margin: 1,color: "#579fba" }}>
         <ChevronRightIcon />
@@ -92,19 +88,12 @@ export default ({ open, onClose }: { open: boolean; onClose: () => void }) => {
     </Drawer>
     <Dialog
             open={openDialog}
-            onClose={() => setOpenDialog(false)}
-        >
+            onClose={() => setOpenDialog(false)} >
             <DialogTitle>אישור מחיקה</DialogTitle>
-            <DialogContent>
-                האם אתה בטוח שברצונך למחוק את המתכון?
-            </DialogContent>
+            <DialogContent> האם אתה בטוח שברצונך למחוק את המתכון?</DialogContent>
             <DialogActions>
                 <Button onClick={() => setOpenDialog(false)}>ביטול</Button>
-                <Button onClick={handleDelete} color="error" variant="contained">
-                    מחק
-                </Button>
+                <Button onClick={handleDelete} color="error" variant="contained"> מחק</Button>
             </DialogActions>
         </Dialog>
-    </>
-    )
-}
+    </> )}

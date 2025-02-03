@@ -4,8 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import { UserContext } from "../../App";
 
 const UserDetails = () => {
-    const [user, userDispatch] = useContext(UserContext)
-    
+    const [user,] = useContext(UserContext)
     
     function stringAvatar(name: string) {
         if (name == undefined) {

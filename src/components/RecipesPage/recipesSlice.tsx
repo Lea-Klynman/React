@@ -7,7 +7,6 @@ import Alert from '@mui/material/Alert';
 export const fetchRecipes = createAsyncThunk('recipes/fetch', async (_, thunkApi) => {
     try {
         const response = await axios.get('http://localhost:3000/api/recipes');
-
         return response.data as RecipeType[];
     }
     catch (error) {
@@ -19,9 +18,7 @@ export const fetchRecipes = createAsyncThunk('recipes/fetch', async (_, thunkApi
 })
 
 export const fetchAddRecipe = createAsyncThunk('recipes/add', async ({recipe,userId}: { recipe: RecipeType; userId: number }, thunkApi) => {
-    try {
-        console.log(recipe, userId);
-        
+    try {        
         const res = await axios.post("http://localhost:3000/api/recipes", recipe, { headers: { 'user-id': userId  } });
         return res.data as RecipeType;
     } catch (error) {
@@ -60,7 +57,7 @@ const recipesSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchRecipes.fulfilled, (state, action: PayloadAction<RecipeType[]>) => {
-                 state.recipes = [/*...state.recipes,*/ ...action.payload];
+                 state.recipes = [...action.payload];
             }).addCase(fetchRecipes.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || "Failed to load recipes";
@@ -90,10 +87,6 @@ const recipesSlice = createSlice({
                 state.loading = true;
                 state.error = null;
             });
-
-
-
-
     },
 });
 export const selectRecipes = (state:RootStore)=>state.recipes;

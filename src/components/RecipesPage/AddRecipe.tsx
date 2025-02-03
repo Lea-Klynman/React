@@ -58,7 +58,7 @@ const AddRecipe = () => {
             await dispatch(fetchAddRecipe({ recipe, userId: parseInt(id!) })).unwrap();
             await dispatch(fetchRecipes()).unwrap();
             reset();
-            navigate('/ShoeRecipe/successedAdding');
+            navigate('/ShowRecipe/successedAdding');
         } catch (error) {
             console.error('Failed to add recipe:', error);
         }

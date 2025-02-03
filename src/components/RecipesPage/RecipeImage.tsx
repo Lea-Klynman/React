@@ -7,7 +7,7 @@ const RecipeImage = ({ imgItem }: { imgItem: { img: string; title: string; autho
     return (
         <>       
                 <Link to={imgItem.link}>
-                  <ImageListItem key={imgItem.img} sx={{ width: 350, height: 350 }}>
+                  <ImageListItem key={imgItem.img} sx={{ width: { xs: '100%', sm: 350 },  height: 350, maxWidth: '100%', overflowX: 'hidden' }}>
                     <img
                       srcSet={`${imgItem.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                       src={`${imgItem.img}?w=248&fit=crop&auto=format`}
@@ -24,7 +24,7 @@ const RecipeImage = ({ imgItem }: { imgItem: { img: string; title: string; autho
                       subtitle={imgItem.author}
                       actionIcon={
                         <IconButton
-                          sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                          sx={{ color: "#ED3D48"}}
                           aria-label={`info about ${imgItem.title}`}
                         >
                           <FavoriteBorderIcon />

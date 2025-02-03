@@ -7,36 +7,12 @@ import { Provider } from 'react-redux'
 import store from './components/RecipesPage/store'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from './components/Them'
-type action = {
-  type: string;
-  data: User
-}
-const userReducer = (state: User, action: action) => {
-   
-  switch (action.type) {
-    case 'Register':
-     return {...state, ...action.data}
-    case 'Log in':
-      return {...state, ...action.data}
-    case 'Update':
-      return {...state, ...action.data}
-      case 'user':
-        return {...state, ...action.data}
-        case 'Logout':
-          return {} as User
-      
-      
-    default:
-      return state
-    }
-  }
-
+import { action, UserReducer } from './components/UserPages/UserReducer'
 type UserContextType = [User, Dispatch<action>];
 
-// Update the context definition
 export const UserContext = createContext<UserContextType>([{} as User, () => {}]);
 function App() {
-const [user,userDispatch] = useReducer(userReducer,{} as User)
+const [user,userDispatch] = useReducer(UserReducer,{} as User)
   return (
     
     <>

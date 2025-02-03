@@ -97,7 +97,7 @@
       "id": 1738450508711,
       "email": "l0533167552@gmail.com",
       "password": "1234",
-      "firstName": "lali",
+      "firstName": "Lali",
       "lastName": "k",
       "address": "בן זכאי 62",
       "phone": "0587652642"
@@ -152,6 +152,79 @@
         "240ml boiling water"
       ],
       "instructions": "Preheat the oven to 175°C (350°F). In a large bowl, mix the flour, sugar, cocoa powder, baking powder, and baking soda. Add the eggs, milk, oil, and vanilla extract, and mix until smooth. Gradually add the boiling water and mix until well combined. Pour the batter into a greased baking pan and bake for 30-35 minutes. Let cool before serving."
+    },
+    {
+      "id": 4,
+      "title": "Stuffed Cabbage",
+      "description": "Delicious cabbage rolls filled with a savory meat and rice mixture, cooked in a rich tomato sauce.",
+      "authorId": 4,
+      "ingredients": [
+        "1 large cabbage",
+        "500g ground beef",
+        "1 cup cooked rice",
+        "1 onion, finely chopped",
+        "2 cloves garlic, minced",
+        "1 egg",
+        "1 tsp salt",
+        "1/2 tsp black pepper",
+        "1 tsp paprika",
+        "1 can (400g) crushed tomatoes",
+        "2 cups beef broth",
+        "2 tbsp tomato paste",
+        "1 tbsp olive oil",
+        "1 tbsp sugar",
+        "1/2 tsp dried oregano"
+      ],
+      "instructions": "Bring a large pot of water to a boil and blanch the whole cabbage for 2-3 minutes until leaves are soft. Remove and carefully separate the leaves. In a bowl, mix ground beef, cooked rice, onion, garlic, egg, salt, pepper, and paprika. Place a spoonful of the mixture onto each cabbage leaf, roll tightly, and tuck in the sides. In a pot, heat olive oil and add tomato paste, crushed tomatoes, sugar, oregano, and beef broth. Place the cabbage rolls seam-side down in the pot, cover, and simmer for 1.5 hours on low heat. Serve warm."
+    },
+    {
+      "id": 5,
+      "title": "Spicy Chinese-Style Fish",
+      "description": "A flavorful and spicy fish dish cooked with aromatic Chinese spices and a rich chili sauce.",
+      "authorId": 5,
+      "ingredients": [
+        "500g white fish fillets (such as tilapia or cod)",
+        "2 tbsp soy sauce",
+        "1 tbsp rice vinegar",
+        "1 tbsp cornstarch",
+        "2 tbsp vegetable oil",
+        "3 cloves garlic, minced",
+        "1-inch piece ginger, grated",
+        "2 red chilies, sliced",
+        "1 tbsp Sichuan peppercorns",
+        "1 cup chicken broth",
+        "2 tbsp doubanjiang (fermented chili bean paste)",
+        "1 tsp sugar",
+        "1 tbsp oyster sauce",
+        "1 tbsp Shaoxing wine",
+        "2 green onions, chopped",
+        "Fresh cilantro for garnish"
+      ],
+      "instructions": "Cut the fish into bite-sized pieces and marinate with soy sauce, rice vinegar, and cornstarch for 15 minutes. Heat vegetable oil in a pan over medium-high heat, then sauté garlic, ginger, red chilies, and Sichuan peppercorns until fragrant. Add doubanjiang and stir-fry for a minute. Pour in the chicken broth, sugar, oyster sauce, and Shaoxing wine, and bring to a simmer. Add the marinated fish pieces and cook for 5-7 minutes until tender. Garnish with green onions and fresh cilantro before serving."
+    },
+    {
+      "id": 6,
+      "title": "Black Forest Cake",
+      "description": "A classic German chocolate cake layered with whipped cream and cherries, topped with chocolate shavings.",
+      "authorId": 6,
+      "ingredients": [
+        "200g all-purpose flour",
+        "50g cocoa powder",
+        "1 tsp baking powder",
+        "1/2 tsp baking soda",
+        "200g sugar",
+        "120g butter, softened",
+        "2 eggs",
+        "1 tsp vanilla extract",
+        "240ml milk",
+        "1 tbsp vinegar",
+        "400g canned cherries, drained (reserve syrup)",
+        "2 tbsp cherry liqueur (Kirsch)",
+        "300ml heavy cream",
+        "2 tbsp powdered sugar",
+        "100g dark chocolate, shaved"
+      ],
+      "instructions": "Preheat oven to 175°C (350°F). Grease and line two 8-inch cake pans. In a bowl, mix flour, cocoa powder, baking powder, and baking soda. In another bowl, cream butter and sugar until fluffy, then add eggs and vanilla extract. Mix in the dry ingredients alternately with milk and vinegar. Pour into cake pans and bake for 30-35 minutes. Let cool completely. Mix cherry syrup with Kirsch. Whip heavy cream with powdered sugar until stiff. Slice cakes in half horizontally. Brush each layer with cherry syrup, then layer with whipped cream and cherries. Stack layers and cover with whipped cream. Garnish with chocolate shavings and extra cherries."
     }
   ]
 }
