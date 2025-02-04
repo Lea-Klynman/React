@@ -70,7 +70,7 @@ const handleLogout=()=>{
             </Container>
         </AppBar > 
      
-        <Box sx={{ minHeight: 'calc(100vh - 64px - 200px)', paddingTop: '50px', overflowX: 'hidden', width: '100%' ,paddingBottom:'20px'}}>
+        <Box component="div" sx={{ minHeight: 'calc(100vh - 64px - 200px)', paddingTop: '50px', overflowX: 'hidden', width: '100%' ,paddingBottom:'20px'}}>
         <Outlet/>
             </Box>
             <Paper component="footer" sx={{  p: 1.5,  mt: 'auto',  backgroundColor: 'rgba(87, 159, 186, 0.8)',  bottom: 0,  width: '100%', overflowX: 'hidden', boxSizing: 'border-box' }}>

@@ -53,7 +53,7 @@ const ShowRecipe=()=>{
       {open && <RecipesList open={open} onClose={handleDrawerToggle} />}
       <Main open={open}>
         <DrawerHeader />
-        <Typography sx={{ width: '100%' }}>
+        <Typography component="div" sx={{ width: '100%' }}>
           <Outlet/>
         </Typography>
       </Main>
